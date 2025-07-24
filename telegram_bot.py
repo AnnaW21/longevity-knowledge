@@ -84,7 +84,8 @@ def start(update: Update, context: CallbackContext):
         ["Извлечение сущностей, гипотез, связей", "Ранжирование задач или гипотез"],
         ["Просмотр нашего графа", "Построение нового графа"],
         ["Гипотеза", "Объяснение"],
-        ["Отчёт по приоритетной задаче"]
+        ["Отчёт по приоритетной задаче"],
+        ["Сбросить историю ИИ-агента"]
 
     ]
     markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True)
@@ -132,6 +133,14 @@ def handle_message(update: Update, context: CallbackContext):
         mode = "/daily-report"
         # model_send_flag = True
         update.message.reply_text("Режим в доработке")
+
+    elif text == "Сбросить историю ИИ-агента":
+        # Очистка истории  
+        user_id = update.message.from_user.id
+        user_histories[user_id] = [{"role": "system", "content": system_prompt}]
+        update.message.reply_text("История сброшена.")
+        mode = ''
+
     else:
         if mode == '':
             update.message.reply_text("Пожалуйста, выберите сначала режим с клавиатуры.")
@@ -154,7 +163,6 @@ def handle_message(update: Update, context: CallbackContext):
 
     except Exception as e:
         update.message.reply_text(f"Ошибка при запросе к LLaMA: {e}")
-
 
 def main():
     updater = Updater(TOKEN)
