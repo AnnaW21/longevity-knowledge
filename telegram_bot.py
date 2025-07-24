@@ -3,8 +3,8 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Callb
 import requests
 import json
 
-TOKEN = '8001171905:AAFYxFf7cMIYSJtMYyr2f7ZIB_k0bw1tWg0'
-API_URL = "http://80.209.242.40:8000/v1/chat/completions"
+TOKEN = 'YOUR TELGRAM TOKEN'
+API_URL = "LLAMA API"s
 HEADERS = {"Content-Type": "application/json"}
 
 # System prompt
