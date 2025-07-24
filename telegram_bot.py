@@ -89,7 +89,7 @@ def start(update: Update, context: CallbackContext):
     ]
     markup = ReplyKeyboardMarkup(reply_keyboard, resize_keyboard=True)
     update.message.reply_text(
-        "Привет! Выбери нужный режим и напиши свой вопрос:",
+        "Здравствуйте! Выберите нужный режим",
         reply_markup=markup
     )
 
@@ -112,8 +112,11 @@ def handle_message(update: Update, context: CallbackContext):
         mode = '/приоритизация'
         # model_send_flag = True
         update.message.reply_text("Режим в доработке")
+
     elif text == "Объяснение":
+        update.message.reply_text("Задайте Ваш вопрос ИИ-агенту:")
         mode = "/объяснение"
+
     elif text == "Построение нового графа":
         mode = "/граф"
         update.message.reply_text("Пожалуйста, отправьте статью для анализа и построения графа.")
@@ -122,6 +125,7 @@ def handle_message(update: Update, context: CallbackContext):
        update.message.reply_text("Режим в доработке")
 
     elif text == "Гипотеза":
+        update.message.reply_text("Какую гипотезу необходимо сформулировать?")
         mode = "/гипотеза"
 
     elif text == "Отчёт по приоритетной задаче":
