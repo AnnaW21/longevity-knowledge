@@ -3,7 +3,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, Callb
 import requests
 import json
 
-TOKEN = 'TELEGRAM TOKEN'
+TOKEN = "TELEGRAM TOKEN"
 API_URL = "LLAMA API"
 HEADERS = {"Content-Type": "application/json"}
 
